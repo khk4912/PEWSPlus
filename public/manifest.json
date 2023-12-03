@@ -8,5 +8,11 @@
     "default_title": "PEWS+"
   },
   "host_permissions": ["*://www.weather.go.kr/pews/*"],
-  "icons": {}
+  "icons": {},
+  "content_scripts": [
+    {
+      "matches": ["*://www.weather.go.kr/pews/*"],
+      "js": ["js/content_script.js"]
+    }
+  ]
 }

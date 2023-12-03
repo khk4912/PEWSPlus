@@ -6,7 +6,8 @@ const mode = process.env.NODE_ENV || 'development'
 const webpackConfig = {
   mode,
   entry: {
-    popup: path.resolve(__dirname, 'src/popup.ts')
+    popup: path.resolve(__dirname, 'src/popup.ts'),
+    content_script: path.resolve(__dirname, 'src/content_script.ts'),
   },
 
   output: {
