@@ -1,0 +1,12 @@
+{
+  "name": "PEWS+",
+  "version": "0.0.1",
+  "description": "PEWS+",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "PEWS+"
+  },
+  "host_permissions": ["*://www.weather.go.kr/pews/*"],
+  "icons": {}
+}
