@@ -33,10 +33,10 @@ export class PEWSWatcher {
     const target = obj.responseURL.slice(-2)
 
     switch (target) {
-      case 'b':
+      case '.b':
         this.handleB(obj.response as ArrayBuffer)
         break
-      case 's':
+      case '.s':
         this.handleS(obj.response as ArrayBuffer)
         break
       case 'li':
@@ -49,7 +49,7 @@ export class PEWSWatcher {
   }
 
   handleB (data: ArrayBuffer): void {
-
+    console.log(data)
   }
 
   handleS (data: ArrayBuffer): void {
