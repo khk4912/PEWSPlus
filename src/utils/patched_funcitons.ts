@@ -1,8 +1,6 @@
-import { PEWSWatcher } from './watcher'
+import type { PEWSWatcher } from './watcher'
 
-export function patchXMLHTTP (): void {
-  // eslint-disable-next-line @typescript-eslint/unbound-method
-
+export function patchXMLHTTP (watcher: PEWSWatcher): void {
   const lengthOfFrame = window.frames.length
   let target: typeof window | null = null
 
@@ -17,13 +15,10 @@ export function patchXMLHTTP (): void {
     return
   }
 
-  const watcher = new PEWSWatcher()
-
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const oldSend = target.XMLHttpRequest.prototype.send
 
   target.XMLHttpRequest.prototype.send = function (body) {
-    console.log(this)
     this.addEventListener('load', function () {
       watcher.handle(this)
     })

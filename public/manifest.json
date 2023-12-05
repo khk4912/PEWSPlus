@@ -15,13 +15,12 @@
   "content_scripts": [
     {
       "matches": ["*://www.weather.go.kr/pews/*"],
-      "js": ["js/content_script.js"],
-      "world": "MAIN"
+      "js": ["js/content_script.js"]
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["js/content_script.js"],
+      "resources": ["js/content_script.js", "js/inject.js"],
       "matches": ["<all_urls>"]
     }
   ],

@@ -29,7 +29,7 @@ export class PEWSWatcher {
   }
 
   handle (obj: XMLHttpRequest): void {
-
+    console.log(obj.responseURL)
   }
 
   handleB (obj: WebDetails): void {

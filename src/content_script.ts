@@ -1,10 +1,10 @@
-import { patchXMLHTTP } from './utils/patched_funcitons'
-
-// eslint-disable-next-line @typescript-eslint/ban-types
-function inject (fn: Function): void {
+function inject (path: string): void {
   const script = document.createElement('script')
-  script.text = `(${fn.toString()})();`
+
+  script.setAttribute('type', 'text/javascript')
+  script.setAttribute('src', path)
+
   document.documentElement.appendChild(script)
 }
 
-inject(patchXMLHTTP)
+inject(chrome.runtime.getURL('js/inject.js'))
