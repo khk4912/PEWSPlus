@@ -1,7 +1,5 @@
 const TIMEOUT = 60
 
-type WebDetails = chrome.webRequest.WebResponseCacheDetails
-
 export class PEWSWatcher {
   private lastEvent: Date | undefined
   isAlive: boolean = false
@@ -29,22 +27,40 @@ export class PEWSWatcher {
   }
 
   handle (obj: XMLHttpRequest): void {
-    console.log(obj.responseURL)
+    if (obj.readyState !== 4) { return }
+    this.initStopLoop()
+
+    const target = obj.responseURL.slice(-2)
+
+    switch (target) {
+      case 'b':
+        this.handleB(obj.response as ArrayBuffer)
+        break
+      case 's':
+        this.handleS(obj.response as ArrayBuffer)
+        break
+      case 'li':
+        this.handleLI(JSON.parse(obj.response as string))
+        break
+      case 'le':
+        this.handleLE(JSON.parse(obj.response as string))
+        break
+    }
   }
 
-  handleB (obj: WebDetails): void {
-    this.initStopLoop()
+  handleB (data: ArrayBuffer): void {
+
   }
 
-  handleS (obj: WebDetails): void {
-    this.initStopLoop()
+  handleS (data: ArrayBuffer): void {
+
   }
 
-  handleLI (obj: WebDetails): void {
-    this.initStopLoop()
+  handleLI (data: JSON): void {
+
   }
 
-  handleLE (obj: WebDetails): void {
-    this.initStopLoop()
+  handleLE (data: JSON): void {
+
   }
 }
