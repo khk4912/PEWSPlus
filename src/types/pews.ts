@@ -1,9 +1,5 @@
 export type Phase = 1 | 2 | 3 | 4
 
-export type GetSta = (url: string, data?: string) => void
-export type GetMMI = (url: string) => void
-export type GetLocation = (evtID: string, phase: Phase) => void
-
 export interface StationInfo {
   name: string
   code: string
@@ -15,10 +11,28 @@ interface StationDatabaseElements extends StationInfo {
 }
 export type StationDatabse = StationDatabaseElements[]
 
-interface Station {
+export interface Station {
   lat: number
   lon: number
   idx: number
   mmi: number
+  info: StationInfo | null
 }
-export type StationList = Record<number, Station>
+export type StationList = Station[]
+
+export interface EarthquakeInfo {
+  lat: number
+  lon: number
+  time: Date
+  magnitude: number
+  maxIntensity: number
+  maxIntensityArea: string[]
+  dep: number
+  eqkID: number
+}
+
+export interface EqkInfoParsed {
+  phase: Phase
+  binData: number[]
+  eqkData?: EarthquakeInfo
+}
