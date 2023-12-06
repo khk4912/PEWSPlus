@@ -1,0 +1,138 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+body {
+  width: 500px;
+  height: 350px;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+
+  background-color: black;
+  color: white;
+
+  font-family:
+    "Pretendard Variable",
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    "Helvetica Neue",
+    "Segoe UI",
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    "Malgun Gothic",
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    sans-serif;
+}
+
+.default-screen {
+  width: 100%;
+  height: 30%;
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  justify-self: center;
+}
+
+#logo {
+  font-weight: 800;
+  font-size: 1.5rem;
+  margin-bottom: 1%;
+}
+
+#status {
+  font-size: 0.9rem;
+  margin-bottom: 5%;
+}
+
+#PEWSOpenButton {
+  width: 100%;
+  border: none;
+  background-color: #6a95fb;
+  color: white;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 2%;
+  border-radius: 2rem;
+}
+
+#PEWSOpenButton:hover {
+  background-color: #5a85f0;
+}
+
+.main-screen {
+  width: 100%;
+  height: 40%;
+  display: grid;
+  text-align: center;
+}
+
+.items-view {
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
+
+.items-view > div {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  width: 70%;
+  height: 60%;
+  padding: 10%;
+
+  border-radius: 0.5rem;
+  border: 0.1rem solid darkgray;
+}
+
+.items-view .title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 10%;
+}
+
+.items-view > div:first-child {
+  margin-right: 6%;
+}
+
+.items-view > div:last-child {
+  margin-left: 6%;
+}
+
+.station-list {
+  overflow-y: auto;
+  width: 90%;
+  height: 100%;
+  margin-top: 5%;
+  display: grid;
+}
+
+.station {
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  margin-bottom: 5%;
+}
+
+.station .mmi {
+  width: 20%;
+  aspect-ratio: 1 / 1;
+  padding: 2%;
+  align-self: center;
+  background-color: #ffc000;
+  margin-right: 10%;
+}
+
+#noEventStations {
+  font-size: 0.7rem;
+}

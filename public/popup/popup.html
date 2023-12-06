@@ -3,7 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>PEWS+</title>
   </head>
-  <body></body>
+  <body>
+    <div class="default-screen">
+      <span id="logo">PEWS+</span>
+      <span id="status">현재 감지된 탭 없음</span>
+
+      <button id="PEWSOpenButton">PEWS 탭 열기</button>
+    </div>
+
+    <div class="main-screen">
+      <div class="items-view">
+        <div class="station-info">
+          <span class="title">관측소 정보</span>
+
+          <div class="station-list">
+            <span id="noEventStations"
+              >현재 계측진도 II 이상 관측소가 없습니다.
+            </span>
+            <!-- <div class="station">
+              <div class="mmi">V</div>
+              <div class="name">화천</div>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="now-status">
+          <div class="title">PEWS 정보</div>
+        </div>
+
+        <div class="eqkInfo">
+          <div class="title">이벤트 정보</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/popup.js"></script>
+  </body>
 </html>
