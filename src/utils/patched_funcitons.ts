@@ -20,7 +20,7 @@ export function patchXMLHTTP (watcher: PEWSWatcher): void {
 
   target.XMLHttpRequest.prototype.send = function (body) {
     this.addEventListener('load', function () {
-      watcher.handle(this)
+      watcher.handle(this).catch(console.error)
     })
     oldSend.call(this, body)
   }
