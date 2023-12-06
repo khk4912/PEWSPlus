@@ -1,7 +1,14 @@
+import type { Phase, StationList } from '../types/pews'
+import * as PEWSClient from './pews_client'
+
 const TIMEOUT = 60
 
 export class PEWSWatcher {
+  public stations: StationList = []
+  public phase: Phase = 1
+
   private lastEvent: Date | undefined
+
   isAlive: boolean = false
 
   private initStopLoop (): void {
@@ -26,7 +33,7 @@ export class PEWSWatcher {
     }
   }
 
-  handle (obj: XMLHttpRequest): void {
+  async handle (obj: XMLHttpRequest): Promise<void> {
     if (obj.readyState !== 4) { return }
     this.initStopLoop()
 
@@ -40,20 +47,26 @@ export class PEWSWatcher {
         this.handleS(obj.response as ArrayBuffer)
         break
       case 'li':
-        this.handleLI(JSON.parse(obj.response as string))
+        this.handleLI(JSON.parse(obj.responseText))
         break
       case 'le':
-        this.handleLE(JSON.parse(obj.response as string))
+        this.handleLE(JSON.parse(obj.responseText))
         break
     }
   }
 
   handleB (data: ArrayBuffer): void {
-    console.log(data)
+    const eqKInfo = PEWSClient.MMIHandler(new Uint8Array(data))
+
+    this.phase = eqKInfo.phase
+
+    for (let i = 0; i < this.stations.length; i++) {
+      this.stations[i].mmi = eqKInfo.binData[i]
+    }
   }
 
   handleS (data: ArrayBuffer): void {
-
+    this.stations = PEWSClient.stationHandler(new Uint8Array(data)) ?? this.stations
   }
 
   handleLI (data: JSON): void {
