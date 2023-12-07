@@ -4,10 +4,14 @@ export function patchXMLHTTP (watcher: PEWSWatcher): void {
   const lengthOfFrame = window.frames.length
   let target: typeof window | null = null
 
-  for (let i = 0; i < lengthOfFrame; i++) {
-    if (window[i].location.href === 'https://www.weather.go.kr/pews/pews2.html') {
-      target = window[i] as typeof window
-      break
+  if (lengthOfFrame === 0) {
+    target = window
+  } else {
+    for (let i = 0; i < lengthOfFrame; i++) {
+      if (window[i].location.href === 'https://www.weather.go.kr/pews/pews2.html') {
+        target = window[i] as typeof window
+        break
+      }
     }
   }
 
