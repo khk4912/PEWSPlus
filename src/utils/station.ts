@@ -1,4 +1,4 @@
-import type { StationDatabse, StationInfo } from '../types/pews'
+import type { StationDatabse as StationDatabase, StationInfo } from '../types/pews'
 
 export const getStationInfo = (
   lat: number,
@@ -20,7 +20,7 @@ export const getStationInfo = (
     : null
 }
 
-export const StationDB: StationDatabse = [
+export const StationDB: StationDatabase = [
   {
     code: 'ADO',
     name: '안동',
@@ -3098,5 +3098,5 @@ export const StationDB: StationDatabse = [
     inOperation: true,
     lat: 36.5406,
     lon: 126.9473
-  },
+  }
 ]
