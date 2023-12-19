@@ -1,0 +1,11 @@
+{
+  "name": "PEWS+",
+  "version": "0.0.1",
+  "description": "PEWS에 더 많은 기능을 제공하는 확장 프로그램입니다.",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+
+  "icons": {}
+}
